@@ -39,21 +39,21 @@ const Navbar = () => {
                 Home
               </Link>
               <Link 
-                href="#" 
+                href="/scan_doc" 
                 className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 flex items-center space-x-1"
               >
                 <Upload className="h-4 w-4" />
                 <span>Scan Documents</span>
               </Link>
               <Link 
-                href="#" 
+                href="/my_docs" 
                 className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 flex items-center space-x-1"
               >
                 <FileText className="h-4 w-4" />
                 <span>My Documents</span>
               </Link>
               <Link 
-                href="#" 
+                href="/pricing" 
                 className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
               >
                 Pricing
@@ -102,21 +102,21 @@ const Navbar = () => {
                 Home
               </Link>
               <Link 
-                href="#" 
+                href="/scan_doc" 
                 className="text-gray-700 block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 transition-colors duration-200 flex items-center space-x-2"
               >
                 <Upload className="h-4 w-4" />
                 <span>Scan Documents</span>
               </Link>
               <Link 
-                href="#" 
+                href="/my_docs" 
                 className="text-gray-700 block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 transition-colors duration-200 flex items-center space-x-2"
               >
                 <FileText className="h-4 w-4" />
                 <span>My Documents</span>
               </Link>
               <Link 
-                href="#" 
+                href="/pricing" 
                 className="text-gray-700 block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 transition-colors duration-200"
               >
                 Pricing

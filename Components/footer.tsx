@@ -11,14 +11,15 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="col-span-1">
                <Link href="/">
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center  space-x-2">
            
             
-                   <Image src="/favicon.png" alt="Logo" width={40} height={40} >
-                   </Image>
+                   
 
           
-            <h3 className="text-lg font-semibold mb-4 text-white">Doculyz</h3>
+            <h3 className="text-lg font-semibold mb-4 text-white flex items-center gap-3">
+              <Image src="/favicon.png" alt="Logo" width={30} height={30} >
+                   </Image>Doculyz</h3>
           </div>
          </Link>
             <p className="text-gray-400 mb-4">
@@ -27,15 +28,15 @@ const Footer = () => {
             <div className="space-y-2 text-sm text-gray-400">
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4" />
-                <span>support@docscanpro.com</span>
+                <span>naimurrahman18thapril@gmail.com</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="h-4 w-4" />
-                <span>1-800-DOCSCAN</span>
+                <span>1-800-DOCULYZ</span>
               </div>
               <div className="flex items-center space-x-2">
                 <MapPin className="h-4 w-4" />
-                <span>San Francisco, CA</span>
+                <span>Dhaka, Bangladesh</span>
               </div>
             </div>
           </div>
@@ -83,12 +84,12 @@ const Footer = () => {
               </li>
               <li>
                 <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  Cloud Storage
+                  Cloud Storage "N/A"
                 </a>
               </li>
               <li>
                 <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  API Integration
+                  API Integration "N/A"
                 </a>
               </li>
             </ul>
@@ -125,7 +126,7 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">
-            © 2024 DocScan Pro. All rights reserved.
+            © 2024 Doculyz. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
