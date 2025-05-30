@@ -1,6 +1,6 @@
 "use client";
 
-import LoadingSkeleton from "../../Components/loadingSkeleton";
+import LoadingSkeleton from "../Components/loadingSkeleton";
 import { useEffect, useState } from "react";
 
 export default function Page() {
