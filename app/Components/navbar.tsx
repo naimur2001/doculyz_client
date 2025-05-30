@@ -72,12 +72,18 @@ const Navbar = () => {
             <button className="text-gray-700 hover:text-blue-600 p-2 rounded-md transition-colors duration-200">
               <Settings className="h-5 w-5" />
             </button>
+          <Link href="/signin">
             <button className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
               Sign In
             </button>
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
-              Start Scanning
+          </Link>
+          
+<Link href="/signup">
+  <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
+              Sign Up
             </button>
+</Link>
+
           </div>
 
           {/* Mobile menu button */}
@@ -130,12 +136,16 @@ const Navbar = () => {
               
               {/* Mobile Action Buttons */}
               <div className="pt-4 border-t border-gray-200 space-y-2">
+            
+            <Link href="/signin">
                 <button className="w-full text-left text-gray-700 block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 transition-colors duration-200">
                   Sign In
-                </button>
+                </button></Link>
+               <Link href="/signup">
                 <button className="w-full bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg text-base font-medium transition-colors duration-200">
-                  Start Scanning
+                  Sign Up
                 </button>
+               </Link>
               </div>
             </div>
           </div>
