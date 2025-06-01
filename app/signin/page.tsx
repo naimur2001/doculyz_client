@@ -2,6 +2,9 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { FcGoogle } from 'react-icons/fc'; // Google Icon
+import { useRouter } from 'next/navigation';
+import { apiRequest } from '../lib/api';
+import { useAuthStore } from '../store/useAuthStore';
 
 const Signin = () => {
   const [form, setForm] = useState({ email: '', password: '' });
@@ -10,10 +13,21 @@ const Signin = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const router = useRouter();
+const fetchUser = useAuthStore((state) => state.fetchUser);
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Signin form data:', form);
-    // TODO: Send to backend/signin API
+
+      try {
+        await apiRequest("/api/v1/auth/login", "POST", form); // 👈 call backend
+        await fetchUser(); 
+        router.push("/"); 
+         
+          // ✅ Update Zustand state immediately
+   // redirect on success
+      } catch (err: any) {
+        alert(err.message); // show error message
+      }
   };
 
   const handleGoogleSignIn = () => {

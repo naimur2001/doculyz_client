@@ -1,8 +1,10 @@
 "use client"
 import React, { useState } from 'react';
-import { Menu, X, FileText, Upload, Settings } from 'lucide-react';
+import { Menu, X, FileText, Upload, Settings  } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useAuthStore } from '../store/useAuthStore';
+import { useRouter } from 'next/navigation';
 
 
 const Navbar = () => {
@@ -10,6 +12,13 @@ const Navbar = () => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const {user,logout,isLoggedIn}=useAuthStore()
+  const router=useRouter()
+    const handleLogout = async () => {
+   await logout(); // Zustand clear
+    router.push('/'); // redirect to homepage
   };
 
   return (
@@ -45,13 +54,20 @@ const Navbar = () => {
                 <Upload className="h-4 w-4" />
                 <span>Scan Documents</span>
               </Link>
-              <Link 
+             {
+              isLoggedIn ? ( <Link 
                 href="/my_docs" 
                 className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 flex items-center space-x-1"
               >
                 <FileText className="h-4 w-4" />
                 <span>My Documents</span>
-              </Link>
+              </Link>)
+              
+              :(<></>)
+             }
+
+
+
               <Link 
                 href="/pricing" 
                 className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
@@ -69,10 +85,23 @@ const Navbar = () => {
 
           {/* Desktop Action Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <button className="text-gray-700 hover:text-blue-600 p-2 rounded-md transition-colors duration-200">
-              <Settings className="h-5 w-5" />
-            </button>
-          <Link href="/signin">
+          {
+            isLoggedIn ? (
+               <Link href="/profile">
+                <button className="text-gray-700 hover:text-blue-600 p-2 rounded-md transition-colors duration-200 flex items-center gap-1"> <span>{user?.fullName.split(" ")[0]}</span>
+             <Settings  className="h-5 w-5" />
+            </button></Link>
+            ):(<></>)
+          }
+         {
+          isLoggedIn ?(<button
+  onClick={handleLogout}
+  className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
+>
+  Logout
+</button>
+):(<>
+           <Link href="/signin">
             <button className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
               Sign In
             </button>
@@ -83,8 +112,22 @@ const Navbar = () => {
               Sign Up
             </button>
 </Link>
+          </>)
+         }
 
           </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
           {/* Mobile menu button */}
           <div className="md:hidden">
@@ -96,6 +139,9 @@ const Navbar = () => {
             </button>
           </div>
         </div>
+
+
+
 
         {/* Mobile Navigation Menu */}
         {isMenuOpen && (
@@ -114,13 +160,18 @@ const Navbar = () => {
                 <Upload className="h-4 w-4" />
                 <span>Scan Documents</span>
               </Link>
-              <Link 
+              {isLoggedIn ? (
+                <Link 
                 href="/my_docs" 
                 className="text-gray-700 block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 transition-colors duration-200 flex items-center space-x-2"
               >
                 <FileText className="h-4 w-4" />
                 <span>My Documents</span>
               </Link>
+              ) : (
+               <></> 
+              )
+              }
               <Link 
                 href="/pricing" 
                 className="text-gray-700 block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 transition-colors duration-200"
@@ -136,16 +187,28 @@ const Navbar = () => {
               
               {/* Mobile Action Buttons */}
               <div className="pt-4 border-t border-gray-200 space-y-2">
-            
-            <Link href="/signin">
+  {
+    isLoggedIn ? (<button
+  onClick={handleLogout}
+  className="w-full text-left text-gray-700 block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 transition-colors duration-200"
+>
+  Logout
+</button>):
+(
+ <>
+ <Link href="/signin">
                 <button className="w-full text-left text-gray-700 block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 transition-colors duration-200">
                   Sign In
-                </button></Link>
+                </button>
+                
+                </Link>
+               
                <Link href="/signup">
                 <button className="w-full bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg text-base font-medium transition-colors duration-200">
                   Sign Up
                 </button>
-               </Link>
+               </Link></> 
+)  }
               </div>
             </div>
           </div>

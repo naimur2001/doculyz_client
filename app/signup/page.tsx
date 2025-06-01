@@ -1,20 +1,29 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { apiRequest } from "../lib/api";
+import { useAuthStore } from "../store/useAuthStore";
 
 const Signup = () => {
-  const [form, setForm] = useState({ name: "", email: "", password: "" });
+  const [form, setForm] = useState({ fullName: "", email: "", password: "" });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Signup form data:", form);
-    // TODO: send to backend/signup API
-  };
-
+ const router = useRouter(); // 👈 inside component
+ const fetchUser = useAuthStore((state) => state.fetchUser);
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  try {
+    await apiRequest("/api/v1/auth/signup", "POST", form); // 👈 call backend
+    await fetchUser();
+    router.push("/"); // redirect on success
+  } catch (err: any) {
+    alert(err.message); // show error message
+  }
+};
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center px-4">
       <div className="w-full max-w-md bg-white p-8 rounded-xl shadow-md">
@@ -28,10 +37,10 @@ const Signup = () => {
             </label>
             <input
               type="text"
-              name="name"
-              id="name"
+              name="fullName"
+              id="fullName"
               required
-              value={form.name}
+              value={form.fullName}
               onChange={handleChange}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
               placeholder="Naimur Rahman"
