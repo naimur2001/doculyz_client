@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { FileText, Scan, Shield, Zap } from 'lucide-react';
+import Link from 'next/link';
 export default function Home() {
   return (
    <main className="">
@@ -19,10 +20,11 @@ export default function Home() {
               Transform your physical documents into high-quality digital files with our advanced scanning technology. Fast, secure, and reliable document digitization for businesses and individuals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/scan_doc">
               <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200 flex items-center justify-center space-x-2">
                 <Scan className="h-5 w-5" />
                 <span>Start Scanning Now</span>
-              </button>
+              </button></Link>
               <button className="bg-white hover:bg-gray-50 text-blue-600 border-2 border-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200">
                 Learn More
               </button>

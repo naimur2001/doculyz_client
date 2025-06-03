@@ -21,6 +21,7 @@ const Navbar = () => {
     router.push('/'); // redirect to homepage
   };
 
+
   return (
     <nav className="bg-white shadow-lg border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -88,7 +89,8 @@ const Navbar = () => {
           {
             isLoggedIn ? (
                <Link href="/profile">
-                <button className="text-gray-700 hover:text-blue-600 p-2 rounded-md transition-colors duration-200 flex items-center gap-1"> <span>{user?.fullName.split(" ")[0]}</span>
+                <button className="text-gray-700 hover:text-blue-600 p-2 rounded-md transition-colors duration-200 flex items-center gap-1">
+<span>{user?.fullName?.trim() ? user.fullName.trim().split(" ")[0] : "user"}</span>
              <Settings  className="h-5 w-5" />
             </button></Link>
             ):(<></>)

@@ -1,6 +1,6 @@
 // lib/api.ts
 import axios from "axios";
-
+// 👇 dynamic base
 const axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000", // 👈 dynamic base
   withCredentials: true,
@@ -9,6 +9,7 @@ const axiosInstance = axios.create({
   },
 });
 
+// 👇 dynamic base
 
 export async function apiRequest(
   url: string,
