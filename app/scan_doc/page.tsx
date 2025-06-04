@@ -7,12 +7,15 @@ import { apiRequest } from "../lib/api";
 import Image from "next/image";
 import  saveAs from "file-saver";
 import { Document, Packer, Paragraph, TextRun } from "docx";
-
+import { useRouter } from "next/navigation";
+import { useAuthStore } from "../store/useAuthStore";
 const DocumentUpload = () => {
   const [file, setFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
   const [extractedText, setExtractedText] = useState<string>("");
 
+ const router = useRouter(); 
+ const {user}=useAuthStore()
 
 const handleUpload = async () => {
   if (!file) return;
@@ -33,11 +36,17 @@ const handleUpload = async () => {
     alert("Uploaded successfully!");
 
       
-    } catch (err) {
+    } catch (err:any) {
       console.error(err);
+      if (err.message==="Unauthorized: No token provided") {
+        
+        alert("please login first");
+      router.push('/signin')
+      return
+      }
       alert("Upload failed!");
       setExtractedText("");
-    } finally {
+    } finally { 
       setUploading(false);
     }
   };
@@ -76,7 +85,8 @@ const handleUpload = async () => {
         <h2 className="mb-6 text-2xl font-semibold text-gray-700">
           Upload your documents
         </h2>
-        <input
+        {!user && <p className="mb-4 text-gray-600">Please login to upload your documents.</p>}
+   <input
           type="file"
           onChange={(e) => setFile(e.target.files?.[0] || null)}
           className="block w-full text-gray-700 file:mr-4 file:py-2 file:px-4 file:border file:border-pink-200 file:rounded file:text-sm file:bg-gray-100 hover:file:bg-gray-200"
