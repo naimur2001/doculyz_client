@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import  saveAs from "file-saver";
 import { Document, Packer, Paragraph, TextRun } from "docx";
 import { useDocStore } from "../store/useDocStore";
-type Document = {
+type myDocuments = {
   id: string;
   title: string;
   fileUrl: string;

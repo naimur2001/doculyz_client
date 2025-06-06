@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-type Documents ={
+type myDocuments ={
 id: string;
 fileName: string;
 filePath: string;
@@ -9,8 +9,8 @@ extracted: string;
 }
 
 type DocStore = {
-  allDocuments: Documents[];
-  setAllDocuments: (doc: Documents[]) => void;
+  allDocuments: myDocuments[];
+  setAllDocuments: (doc: myDocuments[]) => void;
 };
 
 export const useDocStore = create<DocStore>((set) => ({
