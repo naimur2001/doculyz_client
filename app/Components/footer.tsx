@@ -84,12 +84,12 @@ const Footer = () => {
               </li>
               <li>
                 <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  Cloud Storage "N/A"
+                  Cloud Storage &quot;N/A&quot;
                 </a>
               </li>
               <li>
                 <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  API Integration "N/A"
+                  API Integration &quot;N/A&quot;
                 </a>
               </li>
             </ul>

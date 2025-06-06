@@ -13,7 +13,7 @@ const about = () => {
               About Doculyz
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We're revolutionizing document digitization with cutting-edge technology and a commitment to quality, security, and user experience.
+              We&apos;re revolutionizing document digitization with cutting-edge technology and a commitment to quality, security, and user experience.
             </p>
           </div>
         </div>
@@ -29,7 +29,7 @@ const about = () => {
                 At Doculyz, we believe that every document deserves to be preserved with the highest quality possible. Our mission is to provide businesses and individuals with professional-grade document scanning solutions that are fast, secure, and incredibly easy to use.
               </p>
               <p className="text-lg text-gray-600">
-                We're committed to helping organizations go paperless while maintaining the integrity and accessibility of their important documents.
+                We&apos;re committed to helping organizations go paperless while maintaining the integrity and accessibility of their important documents.
               </p>
             </div>
             <div className="mt-8 lg:mt-0">
@@ -74,7 +74,7 @@ const about = () => {
                 <Users className="h-8 w-8 text-purple-600" />
               </div>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">User-Centric</h3>
-              <p className="text-gray-600">Every feature we build is designed with our users' needs and workflows in mind.</p>
+              <p className="text-gray-600">Every feature we build is designed with our users&apos; needs and workflows in mind.</p>
             </div>
             
             <div className="text-center">
