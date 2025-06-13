@@ -5,6 +5,7 @@ import { FcGoogle } from 'react-icons/fc'; // Google Icon
 import { useRouter } from 'next/navigation';
 import { apiRequest } from '../lib/api';
 import { useAuthStore } from '../store/useAuthStore';
+import { showErrorAlert } from '../lib/alert';
 
 const Signin = () => {
   const [form, setForm] = useState({ email: '', password: '' });
@@ -26,7 +27,8 @@ const fetchUser = useAuthStore((state) => state.fetchUser);
           // ✅ Update Zustand state immediately
    // redirect on success
       } catch (err: any) {
-        alert(err.message); // show error message
+        // alert(err.message); // show error message
+        await showErrorAlert(err.message);
       }
   };
 

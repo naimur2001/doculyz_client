@@ -9,6 +9,7 @@ import  saveAs from "file-saver";
 import { Document, Packer, Paragraph, TextRun } from "docx";
 import { useRouter } from "next/navigation";
 import { useAuthStore } from "../store/useAuthStore";
+import { showErrorAlert, showSuccessAlert } from "../lib/alert";
 const DocumentUpload = () => {
   const [file, setFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
@@ -33,14 +34,17 @@ const handleUpload = async () => {
       } else {
         setExtractedText("No extracted text found.");
       }
-    alert("Uploaded successfully!");
+    // alert("Uploaded successfully!");
+    await showSuccessAlert("Uploaded successfully!");
 
       
     } catch (err:any) {
       console.error(err);
       if (err.message==="Unauthorized: No token provided") {
         
-        alert("please login first");
+        // alert("please signin first");
+await showErrorAlert("please signin first");
+
       router.push('/signin')
       return
       }
@@ -55,7 +59,7 @@ const handleUpload = async () => {
   const isImage = file?.type.startsWith("image/");
   const isPDF = file?.type === "application/pdf";
 
-
+//download word
   const handleDownloadDocx = async () => {
   const doc = new Document({
     sections: [
@@ -72,6 +76,8 @@ const handleUpload = async () => {
   const blob = await Packer.toBlob(doc);
   saveAs(blob, "extracted-text.docx");
 };
+
+
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col md:flex-row items-start justify-center px-6 py-12 gap-12 max-w-7xl mx-auto">
       
