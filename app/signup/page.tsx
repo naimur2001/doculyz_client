@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { apiRequest } from "../lib/api";
 import { useAuthStore } from "../store/useAuthStore";
+import { showErrorAlert } from "../lib/alert";
 
 const Signup = () => {
   const [form, setForm] = useState({ fullName: "", email: "", password: "" });
@@ -21,7 +22,8 @@ const handleSubmit = async (e: React.FormEvent) => {
     await fetchUser();
     router.push("/"); // redirect on success
   } catch (err: any) {
-    alert(err.message); // show error message
+    // alert(err.message); // show error message
+    await showErrorAlert(err.message);
   }
 };
   return (
